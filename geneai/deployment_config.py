@@ -194,9 +194,12 @@ def load_config() -> AppConfig:
     config.database.max_overflow = int(os.getenv("DB_MAX_OVERFLOW", "10"))
     
     # Redis Configuration
-    config.redis.redis_url = os.getenv("REDIS_URL")
-    config.redis.upstash_rest_url = os.getenv("UPSTASH_REDIS_REST_URL")
-    config.redis.upstash_rest_token = os.getenv("UPSTASH_REDIS_REST_TOKEN")
+    redis_url = os.getenv("REDIS_URL", "").strip()
+    config.redis.redis_url = redis_url if redis_url else None
+    upstash_url = os.getenv("UPSTASH_REDIS_REST_URL", "").strip()
+    config.redis.upstash_rest_url = upstash_url if upstash_url else None
+    upstash_token = os.getenv("UPSTASH_REDIS_REST_TOKEN", "").strip()
+    config.redis.upstash_rest_token = upstash_token if upstash_token else None
     
     # Security Configuration
     config.security.secret_key = os.getenv("SECRET_KEY", "")
@@ -245,10 +248,10 @@ def load_config() -> AppConfig:
             # Redis
             if 'redis' in st.secrets:
                 redis_secrets = st.secrets['redis']
-                if 'url' in redis_secrets:
-                    config.redis.upstash_rest_url = redis_secrets['url']
-                if 'token' in redis_secrets:
-                    config.redis.upstash_rest_token = redis_secrets['token']
+                if 'url' in redis_secrets and redis_secrets['url']:
+                    config.redis.upstash_rest_url = redis_secrets['url'].strip() if redis_secrets['url'].strip() else None
+                if 'token' in redis_secrets and redis_secrets['token']:
+                    config.redis.upstash_rest_token = redis_secrets['token'].strip() if redis_secrets['token'].strip() else None
             
             # Security
             if 'security' in st.secrets:

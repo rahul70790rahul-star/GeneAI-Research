@@ -77,9 +77,6 @@ from geneai.professional_ui.core import (
     replace,
 )
 
-# Get configuration
-config = get_config()
-
 st.set_page_config(
     page_title="GeneAI Research - AI-Powered Biology Workspace",
     page_icon="🧬",
@@ -1285,6 +1282,7 @@ with st.sidebar:
     st.divider()
     
     # Deployment Status
+    config = get_config()
     if is_production() or is_streamlit_cloud():
         st.markdown("### 🚀 Deployment Status")
         env_label = "Streamlit Cloud" if is_streamlit_cloud() else "Production"
@@ -1719,6 +1717,8 @@ elif page == "Analysis Statistics":
 else:
     # Default to overview
     render_main_dashboard()
+
+
 
 
 

@@ -136,10 +136,10 @@ async def startup_event():
     # Try to load default model
     try:
         from geneai.mutation_ml.integration import MutationMLIntegration
-        integration = MutationMLIntegration()
         model_path = MODEL_DIR / DEFAULT_MODEL
         if model_path.exists():
-            if integration.load_model(str(model_path)):
+            integration = MutationMLIntegration(model_path=str(model_path))
+            if integration.load_model():
                 logger.info(f"Loaded model: {DEFAULT_MODEL}")
             else:
                 logger.warning(f"Failed to load model: {DEFAULT_MODEL}")
