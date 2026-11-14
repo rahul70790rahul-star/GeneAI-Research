@@ -1,0 +1,2123 @@
+{
+  "tasks": [
+    {
+      "task_id": "c79359e1",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.788127",
+      "updated_at": "2026-11-11T17:49:23.788134",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "9dd574c6",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.810837",
+      "updated_at": "2026-11-11T17:49:23.810839",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "be0dfd26",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.829958",
+      "updated_at": "2026-11-11T17:49:23.829959",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "d4d46815",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.846454",
+      "updated_at": "2026-11-11T17:49:23.846455",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "ecfba6ac",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.864291",
+      "updated_at": "2026-11-11T17:49:23.864292",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "da224284",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.907641",
+      "updated_at": "2026-11-11T17:49:23.907642",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "12ca713c",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:49:23.971420",
+      "updated_at": "2026-11-11T17:49:23.971422",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "51c142f1",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.849956",
+      "updated_at": "2026-11-11T17:51:54.849959",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "730d8cff",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.862761",
+      "updated_at": "2026-11-11T17:51:54.862762",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "a21d3eb9",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.876334",
+      "updated_at": "2026-11-11T17:51:54.876335",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "5e02007c",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.889439",
+      "updated_at": "2026-11-11T17:51:54.889440",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "2e767c3e",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.902437",
+      "updated_at": "2026-11-11T17:51:54.902438",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "d43f12b3",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.914188",
+      "updated_at": "2026-11-11T17:51:54.914190",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "6b7aa9dd",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-11T17:51:54.980604",
+      "updated_at": "2026-11-11T17:51:54.980607",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "05d6b1a6",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.248882",
+      "updated_at": "2026-11-12T21:55:28.248884",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "7b0ba7d0",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.267315",
+      "updated_at": "2026-11-12T21:55:28.267316",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "ff15bc85",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.299994",
+      "updated_at": "2026-11-12T21:55:28.299995",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "baf8b7e8",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.325170",
+      "updated_at": "2026-11-12T21:55:28.325172",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "079181a8",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.350574",
+      "updated_at": "2026-11-12T21:55:28.350576",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "3b5eecb8",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.370825",
+      "updated_at": "2026-11-12T21:55:28.370828",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "9ea8a2fb",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T21:55:28.460155",
+      "updated_at": "2026-11-12T21:55:28.460157",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "2b482ceb",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.421458",
+      "updated_at": "2026-11-12T22:09:56.421460",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "5e40aca1",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.433675",
+      "updated_at": "2026-11-12T22:09:56.433682",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "8f7953c7",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.449750",
+      "updated_at": "2026-11-12T22:09:56.449757",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "da4d3f82",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.467087",
+      "updated_at": "2026-11-12T22:09:56.467089",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "b8f26b35",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.473388",
+      "updated_at": "2026-11-12T22:09:56.473390",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "782baac4",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.519665",
+      "updated_at": "2026-11-12T22:09:56.519667",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "19902266",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T22:09:56.538581",
+      "updated_at": "2026-11-12T22:09:56.538586",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "7bdec691",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:32.930133",
+      "updated_at": "2026-11-12T23:06:32.930136",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "856acc65",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:32.958687",
+      "updated_at": "2026-11-12T23:06:32.958688",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "fa9f19f4",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:33.008092",
+      "updated_at": "2026-11-12T23:06:33.008093",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "494955b6",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:33.044722",
+      "updated_at": "2026-11-12T23:06:33.044724",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "1b9831c2",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:33.073111",
+      "updated_at": "2026-11-12T23:06:33.073112",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "fc5e732e",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:33.133068",
+      "updated_at": "2026-11-12T23:06:33.133070",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "55d8205c",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:06:33.294006",
+      "updated_at": "2026-11-12T23:06:33.294008",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "fe604ee5",
+      "name": "Test Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.511285",
+      "updated_at": "2026-11-12T23:14:36.511292",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "55e04857",
+      "name": "Test Execution",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.567315",
+      "updated_at": "2026-11-12T23:14:36.567318",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "7773604c",
+      "name": "Multi-step Task",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Report",
+            "sections": []
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.615754",
+      "updated_at": "2026-11-12T23:14:36.615759",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "04b44eaf",
+      "name": "Dependent Steps",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53"
+          },
+          "depends_on": [
+            "step1"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.696837",
+      "updated_at": "2026-11-12T23:14:36.696841",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "b6785c8a",
+      "name": "Long Running",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE0"
+          }
+        },
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE1"
+          }
+        },
+        {
+          "step_id": "step2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE2"
+          }
+        },
+        {
+          "step_id": "step3",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE3"
+          }
+        },
+        {
+          "step_id": "step4",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE4"
+          }
+        },
+        {
+          "step_id": "step5",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE5"
+          }
+        },
+        {
+          "step_id": "step6",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE6"
+          }
+        },
+        {
+          "step_id": "step7",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE7"
+          }
+        },
+        {
+          "step_id": "step8",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE8"
+          }
+        },
+        {
+          "step_id": "step9",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "GENE9"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.741530",
+      "updated_at": "2026-11-12T23:14:36.741533",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "32bea0f4",
+      "name": "History Test",
+      "description": "Test",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "step1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.820280",
+      "updated_at": "2026-11-12T23:14:36.820283",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    },
+    {
+      "task_id": "e186d72a",
+      "name": "Drug Discovery for TP53",
+      "description": "Find drugs targeting TP53",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "analyze_gene",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "query": "TP53 inhibitor",
+            "limit": 10
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "admet_check",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "literature_review",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 drug discovery",
+            "max_results": 20
+          },
+          "depends_on": [
+            "analyze_gene"
+          ]
+        },
+        {
+          "step_id": "generate_report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "TP53 Drug Discovery Report",
+            "sections": [
+              {
+                "title": "Gene Analysis",
+                "content": "{{analyze_gene}}"
+              },
+              {
+                "title": "Drug Candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET Profile",
+                "content": "{{admet_check}}"
+              },
+              {
+                "title": "Literature Review",
+                "content": "{{literature_review}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs",
+            "admet_check",
+            "literature_review"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-12T23:14:36.964932",
+      "updated_at": "2026-11-12T23:14:36.964939",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": []
+    }
+  ],
+  "saved_at": "2026-11-12T23:14:36.965122"
+}

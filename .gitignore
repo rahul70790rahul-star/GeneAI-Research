@@ -1,0 +1,134 @@
+# GeneAI Research - Git Ignore Rules
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.egg-info/
+dist/
+build/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.local
+.env.*.local
+
+# Streamlit Secrets (NEVER commit actual secrets!)
+.streamlit/secrets.toml
+.streamlit/secrets.toml.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-journal
+data/*.sqlite3
+data/*.db
+
+# Logs
+*.log
+logs/
+data/logs/
+
+# Uploads
+uploads/
+data/uploads/
+
+# Models (large files)
+data/models/*.pkl
+data/models/*.joblib
+data/models/*.onnx
+
+# Dataset downloads (large files)
+data/*.gz
+data/*.tsv
+data/*.vcf
+data/*.vcf.gz
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+backups/
+
+# Docker
+docker-compose.override.yml
+
+# CI/CD
+.github/workflows/*.yml.local
+
+# Test artifacts
+.coverage
+coverage.xml
+bandit-report.json
+safety-report.json
+
+# Deployment
+.env.production
+.env.staging
+render.yaml.local
+
+# Development/debug scripts (auto-generated, do not commit)
+check_*.py
+fix_*.py
+debug_*.py
+test_*.py
+validate*.py
+verify_*.py
+rewrite_*.py
+find_*.py
+move_*.py
+update_*.py
+inspect_*.py
+train_*.py
+download_*.py
+run_*.py
+list_*.py
+*.txt
+*.out
+*.enc
+*.log
+
+# Temporary work directories
+work/
+outputs/
+
+# IDE/tool directories
+.kilo/
+.playwright-mcp/
+.opencode/
+
+# Local storage
+geneai_local_storage/
+local_storage/
+
+# Node modules
+node_modules/

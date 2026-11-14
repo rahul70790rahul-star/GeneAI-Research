@@ -1,0 +1,1005 @@
+{
+  "tasks": [
+    {
+      "task_id": "daily_gene_monitoring_7c2d75d5",
+      "name": "Daily Gene Monitoring: TP53, BRCA1, EGFR",
+      "description": "Daily annotation of a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 9 * * *",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "gene_1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "BRCA1"
+          }
+        },
+        {
+          "step_id": "gene_2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "EGFR"
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Daily Gene Monitoring Report",
+            "sections": [
+              {
+                "title": "Gene annotations",
+                "content": "{{gene_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_0",
+            "gene_1",
+            "gene_2"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T08:49:40.774636",
+      "updated_at": "2026-11-13T08:49:40.774666",
+      "last_run": null,
+      "next_run": "2026-11-13T09:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "gene",
+        "monitoring",
+        "daily"
+      ]
+    },
+    {
+      "task_id": "drug_discovery_pipeline_917d1919",
+      "name": "Drug Discovery Pipeline: cancer",
+      "description": "Search and profile drug candidates for cancer",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "search_type": "disease",
+            "query": "cancer",
+            "limit": 20
+          }
+        },
+        {
+          "step_id": "admet",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "{{search_drugs.drugs[0].smiles}}"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Drug Discovery Pipeline: cancer",
+            "sections": [
+              {
+                "title": "Drug candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET",
+                "content": "{{admet}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T08:49:40.824619",
+      "updated_at": "2026-11-13T08:49:40.824636",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "drug_discovery",
+        "cancer"
+      ]
+    },
+    {
+      "task_id": "biomarker_discovery_964aa66c",
+      "name": "Biomarker Discovery: lung_cancer",
+      "description": "Discover biomarkers for lung_cancer using blood samples",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_analysis",
+          "executor": "gene_analysis",
+          "parameters": {
+            "disease": "lung_cancer",
+            "limit": 50
+          }
+        },
+        {
+          "step_id": "literature",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "lung_cancer biomarker blood",
+            "max_results": 30
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Biomarker Discovery Report: lung_cancer",
+            "sections": [
+              {
+                "title": "Candidate genes",
+                "content": "{{gene_analysis}}"
+              },
+              {
+                "title": "Literature",
+                "content": "{{literature}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_analysis",
+            "literature"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T08:49:40.831700",
+      "updated_at": "2026-11-13T08:49:40.831715",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "biomarker",
+        "discovery",
+        "lung_cancer"
+      ]
+    },
+    {
+      "task_id": "weekly_literature_review_f86e8cfb",
+      "name": "Weekly Literature Review: TP53, BRCA1",
+      "description": "Weekly literature review for a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 8 * * 1",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "literature_0",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "literature_1",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "BRCA1 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Weekly Literature Review",
+            "sections": [
+              {
+                "title": "Literature",
+                "content": "{{literature_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "literature_0",
+            "literature_1"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T08:49:40.840615",
+      "updated_at": "2026-11-13T08:49:40.840635",
+      "last_run": null,
+      "next_run": "2026-11-16T08:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "literature",
+        "weekly"
+      ]
+    },
+    {
+      "task_id": "daily_gene_monitoring_bcbcce8c",
+      "name": "Daily Gene Monitoring: TP53, BRCA1, EGFR",
+      "description": "Daily annotation of a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 9 * * *",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "gene_1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "BRCA1"
+          }
+        },
+        {
+          "step_id": "gene_2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "EGFR"
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Daily Gene Monitoring Report",
+            "sections": [
+              {
+                "title": "Gene annotations",
+                "content": "{{gene_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_0",
+            "gene_1",
+            "gene_2"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T11:06:10.126371",
+      "updated_at": "2026-11-13T11:06:10.126377",
+      "last_run": null,
+      "next_run": "2026-11-14T09:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "gene",
+        "monitoring",
+        "daily"
+      ]
+    },
+    {
+      "task_id": "drug_discovery_pipeline_3c773c8e",
+      "name": "Drug Discovery Pipeline: cancer",
+      "description": "Search and profile drug candidates for cancer",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "search_type": "disease",
+            "query": "cancer",
+            "limit": 20
+          }
+        },
+        {
+          "step_id": "admet",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "{{search_drugs.drugs[0].smiles}}"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Drug Discovery Pipeline: cancer",
+            "sections": [
+              {
+                "title": "Drug candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET",
+                "content": "{{admet}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T11:06:10.130258",
+      "updated_at": "2026-11-13T11:06:10.130265",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "drug_discovery",
+        "cancer"
+      ]
+    },
+    {
+      "task_id": "biomarker_discovery_48805286",
+      "name": "Biomarker Discovery: lung_cancer",
+      "description": "Discover biomarkers for lung_cancer using blood samples",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_analysis",
+          "executor": "gene_analysis",
+          "parameters": {
+            "disease": "lung_cancer",
+            "limit": 50
+          }
+        },
+        {
+          "step_id": "literature",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "lung_cancer biomarker blood",
+            "max_results": 30
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Biomarker Discovery Report: lung_cancer",
+            "sections": [
+              {
+                "title": "Candidate genes",
+                "content": "{{gene_analysis}}"
+              },
+              {
+                "title": "Literature",
+                "content": "{{literature}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_analysis",
+            "literature"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T11:06:10.135496",
+      "updated_at": "2026-11-13T11:06:10.135503",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "biomarker",
+        "discovery",
+        "lung_cancer"
+      ]
+    },
+    {
+      "task_id": "weekly_literature_review_7b17aa4b",
+      "name": "Weekly Literature Review: TP53, BRCA1",
+      "description": "Weekly literature review for a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 8 * * 1",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "literature_0",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "literature_1",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "BRCA1 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Weekly Literature Review",
+            "sections": [
+              {
+                "title": "Literature",
+                "content": "{{literature_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "literature_0",
+            "literature_1"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T11:06:10.137657",
+      "updated_at": "2026-11-13T11:06:10.137662",
+      "last_run": null,
+      "next_run": "2026-11-16T08:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "literature",
+        "weekly"
+      ]
+    },
+    {
+      "task_id": "daily_gene_monitoring_541c76f0",
+      "name": "Daily Gene Monitoring: TP53, BRCA1, EGFR",
+      "description": "Daily annotation of a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 9 * * *",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "gene_1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "BRCA1"
+          }
+        },
+        {
+          "step_id": "gene_2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "EGFR"
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Daily Gene Monitoring Report",
+            "sections": [
+              {
+                "title": "Gene annotations",
+                "content": "{{gene_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_0",
+            "gene_1",
+            "gene_2"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T23:17:36.373198",
+      "updated_at": "2026-11-13T23:17:36.373202",
+      "last_run": null,
+      "next_run": "2026-11-14T09:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "gene",
+        "monitoring",
+        "daily"
+      ]
+    },
+    {
+      "task_id": "drug_discovery_pipeline_e7f506cf",
+      "name": "Drug Discovery Pipeline: cancer",
+      "description": "Search and profile drug candidates for cancer",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "search_type": "disease",
+            "query": "cancer",
+            "limit": 20
+          }
+        },
+        {
+          "step_id": "admet",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "{{search_drugs.drugs[0].smiles}}"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Drug Discovery Pipeline: cancer",
+            "sections": [
+              {
+                "title": "Drug candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET",
+                "content": "{{admet}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T23:17:36.375681",
+      "updated_at": "2026-11-13T23:17:36.375684",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "drug_discovery",
+        "cancer"
+      ]
+    },
+    {
+      "task_id": "biomarker_discovery_8bd586fc",
+      "name": "Biomarker Discovery: lung_cancer",
+      "description": "Discover biomarkers for lung_cancer using blood samples",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_analysis",
+          "executor": "gene_analysis",
+          "parameters": {
+            "disease": "lung_cancer",
+            "limit": 50
+          }
+        },
+        {
+          "step_id": "literature",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "lung_cancer biomarker blood",
+            "max_results": 30
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Biomarker Discovery Report: lung_cancer",
+            "sections": [
+              {
+                "title": "Candidate genes",
+                "content": "{{gene_analysis}}"
+              },
+              {
+                "title": "Literature",
+                "content": "{{literature}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_analysis",
+            "literature"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T23:17:36.378727",
+      "updated_at": "2026-11-13T23:17:36.378733",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "biomarker",
+        "discovery",
+        "lung_cancer"
+      ]
+    },
+    {
+      "task_id": "weekly_literature_review_7573ae7d",
+      "name": "Weekly Literature Review: TP53, BRCA1",
+      "description": "Weekly literature review for a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 8 * * 1",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "literature_0",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "literature_1",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "BRCA1 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Weekly Literature Review",
+            "sections": [
+              {
+                "title": "Literature",
+                "content": "{{literature_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "literature_0",
+            "literature_1"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T23:17:36.382505",
+      "updated_at": "2026-11-13T23:17:36.382510",
+      "last_run": null,
+      "next_run": "2026-11-16T08:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "literature",
+        "weekly"
+      ]
+    },
+    {
+      "task_id": "daily_gene_monitoring_ec43f82a",
+      "name": "Daily Gene Monitoring: TP53, BRCA1, EGFR",
+      "description": "Daily annotation of a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 9 * * *",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_0",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "TP53"
+          }
+        },
+        {
+          "step_id": "gene_1",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "BRCA1"
+          }
+        },
+        {
+          "step_id": "gene_2",
+          "executor": "gene_analysis",
+          "parameters": {
+            "gene_symbol": "EGFR"
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Daily Gene Monitoring Report",
+            "sections": [
+              {
+                "title": "Gene annotations",
+                "content": "{{gene_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_0",
+            "gene_1",
+            "gene_2"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T23:46:16.890834",
+      "updated_at": "2026-11-13T23:46:16.890845",
+      "last_run": null,
+      "next_run": "2026-11-14T09:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "gene",
+        "monitoring",
+        "daily"
+      ]
+    },
+    {
+      "task_id": "drug_discovery_pipeline_c9b4bd1f",
+      "name": "Drug Discovery Pipeline: cancer",
+      "description": "Search and profile drug candidates for cancer",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "search_drugs",
+          "executor": "drug_search",
+          "parameters": {
+            "search_type": "disease",
+            "query": "cancer",
+            "limit": 20
+          }
+        },
+        {
+          "step_id": "admet",
+          "executor": "admet",
+          "parameters": {
+            "smiles": "{{search_drugs.drugs[0].smiles}}"
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Drug Discovery Pipeline: cancer",
+            "sections": [
+              {
+                "title": "Drug candidates",
+                "content": "{{search_drugs}}"
+              },
+              {
+                "title": "ADMET",
+                "content": "{{admet}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "search_drugs"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T23:46:16.900859",
+      "updated_at": "2026-11-13T23:46:16.900865",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "drug_discovery",
+        "cancer"
+      ]
+    },
+    {
+      "task_id": "biomarker_discovery_873f9ec7",
+      "name": "Biomarker Discovery: lung_cancer",
+      "description": "Discover biomarkers for lung_cancer using blood samples",
+      "trigger_type": "manual",
+      "schedule": "",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "gene_analysis",
+          "executor": "gene_analysis",
+          "parameters": {
+            "disease": "lung_cancer",
+            "limit": 50
+          }
+        },
+        {
+          "step_id": "literature",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "lung_cancer biomarker blood",
+            "max_results": 30
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Biomarker Discovery Report: lung_cancer",
+            "sections": [
+              {
+                "title": "Candidate genes",
+                "content": "{{gene_analysis}}"
+              },
+              {
+                "title": "Literature",
+                "content": "{{literature}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "gene_analysis",
+            "literature"
+          ]
+        }
+      ],
+      "status": "pending",
+      "created_at": "2026-11-13T23:46:16.903878",
+      "updated_at": "2026-11-13T23:46:16.903885",
+      "last_run": null,
+      "next_run": null,
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "biomarker",
+        "discovery",
+        "lung_cancer"
+      ]
+    },
+    {
+      "task_id": "weekly_literature_review_31536df7",
+      "name": "Weekly Literature Review: TP53, BRCA1",
+      "description": "Weekly literature review for a monitored gene panel",
+      "trigger_type": "scheduled",
+      "schedule": "0 8 * * 1",
+      "event_type": "",
+      "webhook_url": "",
+      "steps": [
+        {
+          "step_id": "literature_0",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "TP53 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "literature_1",
+          "executor": "literature_search",
+          "parameters": {
+            "query": "BRCA1 cancer",
+            "max_results": 20
+          }
+        },
+        {
+          "step_id": "report",
+          "executor": "report_generation",
+          "parameters": {
+            "title": "Weekly Literature Review",
+            "sections": [
+              {
+                "title": "Literature",
+                "content": "{{literature_0}}"
+              }
+            ]
+          },
+          "depends_on": [
+            "literature_0",
+            "literature_1"
+          ]
+        }
+      ],
+      "status": "scheduled",
+      "created_at": "2026-11-13T23:46:16.908012",
+      "updated_at": "2026-11-13T23:46:16.908037",
+      "last_run": null,
+      "next_run": "2026-11-16T08:00:00",
+      "run_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "last_error": null,
+      "context": {},
+      "tags": [
+        "literature",
+        "weekly"
+      ]
+    }
+  ],
+  "saved_at": "2026-11-13T23:46:16.910821"
+}

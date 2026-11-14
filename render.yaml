@@ -1,0 +1,93 @@
+# GeneAI Research - Render Free Tier Configuration
+# Deploy FastAPI ML API to Render Free tier
+# 
+# Render Free Tier Limits:
+# - 750 hours/month (enough for 24/7 with sleep after 15 min inactivity)
+# - 512 MB RAM
+# - 1 CPU
+# - Auto-sleep after 15 min inactivity
+# - Custom domains supported
+# - SSL included
+# - No persistent disk (use Neon for DB, Upstash for Redis)
+
+services:
+  # FastAPI ML API Service
+  - type: web
+    name: geneai-api
+    runtime: python
+    plan: free
+    region: oregon  # or frankfurt, singapore
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements-api.txt
+    startCommand: |
+      uvicorn api_server:app --host 0.0.0.0 --port $PORT --workers 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: ENVIRONMENT
+        value: "production"
+      - key: LOG_LEVEL
+        value: "INFO"
+      
+      # Database (Neon PostgreSQL) - set in Render dashboard
+      - key: DATABASE_URL
+        sync: false
+      
+      # Redis (Upstash) - set in Render dashboard
+      - key: REDIS_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
+      
+      # Security - set in Render dashboard
+      - key: SECRET_KEY
+        sync: false
+      - key: JWT_ALGORITHM
+        value: "HS256"
+      - key: JWT_EXPIRATION_HOURS
+        value: "24"
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: API_KEY_PREFIX
+        value: "gai_"
+      
+      # CORS - Streamlit Community Cloud URL
+      - key: CORS_ORIGINS
+        value: "https://geneai-research.streamlit.app,https://*.streamlit.app,http://localhost:8501,http://localhost:8502"
+      
+      # External APIs (optional) - set in Render dashboard
+      - key: NCBI_API_KEY
+        sync: false
+      - key: UNIPROT_API_KEY
+        sync: false
+      - key: OPENTARGETS_API_KEY
+        sync: false
+      - key: ALPHAFOLD_API_KEY
+        sync: false
+      
+      # ML Model settings
+      - key: MODEL_DIR
+        value: "data/models"
+      - key: DEFAULT_MODEL
+        value: "best_mutation_model_real.pkl"
+      - key: ENABLE_SHAP
+        value: "true"
+      
+      # Feature flags
+      - key: ENABLE_MUTATION_ML
+        value: "true"
+      - key: ENABLE_REST_API
+        value: "true"
+    
+    # Health check endpoint
+    healthCheckPath: /health
+    
+    # Auto-deploy on push to main
+    autoDeploy: true
+
+# Note: PostgreSQL and Redis are NOT created here
+# Use Neon (PostgreSQL) and Upstash (Redis) as external services
+# Add their connection strings as environment variables in Render dashboard

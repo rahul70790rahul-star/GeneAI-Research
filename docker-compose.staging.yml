@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: geneai-app-staging
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+      - GENEAI_DATABASE_PATH=/app/data/geneai_staging.db
+      - GENEAI_LOG_LEVEL=DEBUG
+      - GENEAI_LOG_PATH=/app/logs/geneai_staging.log
+      - GENEAI_ENV=staging
+    volumes:
+      - geneai_staging_data:/app/data
+      - geneai_staging_logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+
+  redis:
+    image: redis:7-alpine
+    container_name: geneai-redis-staging
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_staging_data:/data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: geneai-postgres-staging
+    environment:
+      - POSTGRES_DB=geneai_staging
+      - POSTGRES_USER=geneai
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    volumes:
+      - postgres_staging_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+volumes:
+  geneai_staging_data:
+  geneai_staging_logs:
+  redis_staging_data:
+  postgres_staging_data:
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password_staging.txt
