@@ -113,6 +113,8 @@ download_*.py
 run_*.py
 list_*.py
 *.txt
+!requirements.txt
+!requirements-api.txt
 *.out
 *.enc
 *.log
